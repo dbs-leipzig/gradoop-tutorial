@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.gradoop.tutorial.operators;
+package org.gradoop.tutorial.helper;
 
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
 

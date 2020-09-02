@@ -14,27 +14,29 @@
  * limitations under the License.
  */
 
-package org.gradoop.tutorial.operators.subgraph;
+package org.gradoop.tutorial.operators.grouping;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.gradoop.flink.io.impl.csv.CSVDataSource;
 import org.gradoop.flink.io.impl.dot.DOTDataSink;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
+import org.gradoop.flink.model.impl.operators.keyedgrouping.KeyedGrouping;
 import org.gradoop.flink.util.GradoopFlinkConfig;
 import org.gradoop.tutorial.helper.TutorialHelper;
 
 import java.io.File;
+import java.util.Arrays;
 
 /**
  * Gradoop tutorial
  * ================
  *
- * Operator: Subgraph
- * Task number: 2
- * Short description: Get universities and persons that used the browser Firefox.
- *                    Include all relationships between these vertices.
+ * Operator: Grouping
+ * Task number: 1
+ * Short description: Create a schema graph by grouping vertices and edges by label.
+ *                    How many vertices and edges exist per label?
  */
-public class SubgraphTutorial_2 {
+public class GroupingTutorial_1 {
 
   /**
    * The main function to run your application.
@@ -54,22 +56,27 @@ public class SubgraphTutorial_2 {
 
     /**
      *
-     * Insert your code here!
+     * Add the right grouping key functions and aggregates in the lists below.
      *
      * Classes that may help you:
-     * @see org.gradoop.flink.model.impl.functions.filters.And
-     * @see org.gradoop.flink.model.impl.functions.filters.Or
-     * @see org.gradoop.flink.model.impl.functions.epgm.LabelIsIn
-     * @see org.gradoop.flink.model.impl.functions.epgm.ByProperty
+     * @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
+     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
      *
      */
+    graph = graph.callForGraph(
+      new KeyedGrouping<>(
+        Arrays.asList(/* Add vertex grouping key functions here */),
+        Arrays.asList(/* Add vertex aggregate functions here */),
+        Arrays.asList(/* Add edge grouping key functions here */),
+        Arrays.asList(/* Add edge aggregate functions here */)
+      )
+    );
 
-    // print the schema graph to the console for verification
-    TutorialHelper.getSchemaGraphWithBrowserProperty(graph)
-      .writeTo(new DOTDataSink("gradoop_tutorial_output" + File.separator + "01_subgraph_2.dot", true,
+    // print the graph to the console for verification
+    graph.writeTo(new DOTDataSink("gradoop_tutorial_output" + File.separator + "02_grouping_1.dot", true,
         DOTDataSink.DotFormat.HTML));
 
     // finally execute
-    env.execute("Gradoop Tutorial - Subgraph - Task 2");
+    env.execute("Gradoop Tutorial - Grouping - Task 1");
   }
 }

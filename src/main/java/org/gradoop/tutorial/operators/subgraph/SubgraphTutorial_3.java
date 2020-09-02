@@ -24,7 +24,7 @@ import org.gradoop.flink.io.impl.csv.CSVDataSource;
 import org.gradoop.flink.io.impl.dot.DOTDataSink;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
 import org.gradoop.flink.util.GradoopFlinkConfig;
-import org.gradoop.tutorial.operators.TutorialHelper;
+import org.gradoop.tutorial.helper.TutorialHelper;
 
 import java.io.File;
 
