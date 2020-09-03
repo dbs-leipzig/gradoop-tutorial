@@ -20,11 +20,6 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 import org.gradoop.flink.io.impl.csv.CSVDataSource;
 import org.gradoop.flink.io.impl.dot.DOTDataSink;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
-import org.gradoop.flink.model.impl.functions.epgm.LabelIsIn;
-import org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count;
-import org.gradoop.flink.model.impl.operators.combination.ReduceCombination;
-import org.gradoop.flink.model.impl.operators.grouping.Grouping;
-import org.gradoop.flink.model.impl.operators.grouping.GroupingStrategy;
 import org.gradoop.flink.util.GradoopFlinkConfig;
 import org.gradoop.tutorial.helper.TutorialHelper;
 
