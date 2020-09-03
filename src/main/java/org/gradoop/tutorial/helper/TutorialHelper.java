@@ -17,12 +17,11 @@
 package org.gradoop.tutorial.helper;
 
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
-
 import org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count;
 import org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys;
 import org.gradoop.flink.model.impl.operators.keyedgrouping.KeyedGrouping;
 
-import java.io.File;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -37,8 +36,11 @@ public abstract class TutorialHelper {
    * @return the path to the dataset
    */
   public static String getExampleDataPath() {
-    return TutorialHelper.class.getResource(File.separator + "data" + File.separator + "ldbc_sample")
-      .getPath();
+    final URL resource = TutorialHelper.class.getClassLoader().getResource("ldbc_sample");
+    if (resource == null) {
+      throw new RuntimeException("Can not load the example dataset from resources.");
+    }
+    return resource.getPath();
   }
 
   /**

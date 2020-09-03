@@ -41,10 +41,11 @@ import java.util.Arrays;
  *
  * Operator: Grouping
  * Task number: 3
- * Short description: How many people are born at the same weekday (Mon – Sun)?
+ * Short description: How many people are born on the same weekday (Mon – Sun)?
  *                    How old is the youngest and oldest person in the group?
  *                    How many know each other from these groups?
- * Note: you already have a subgraph with 'person' nodes and 'knows' edges.
+ * Note: You already have a subgraph with 'person' nodes and 'knows' edges.
+ *       All person vertices have now an additional property 'age' as Integer.
  */
 public class GroupingTutorial_3 {
 
@@ -71,7 +72,7 @@ public class GroupingTutorial_3 {
      *
      * Add the right grouping key functions and aggregates in the lists below.
      *
-     * Also modify the content of class GetYearOfDate (see below)
+     * Also modify the content of class GetDayOfDate (see below)
      *
      * Classes that may help you:
      * @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
@@ -103,7 +104,7 @@ public class GroupingTutorial_3 {
    *
    * @param <V> the type of the vertex.
    */
-  private static class GetYearOfDate<V extends Vertex> implements KeyFunction<V, String> {
+  private static class GetDayOfDate<V extends Vertex> implements KeyFunction<V, String> {
     /**
      * Extracts the key to group.
      *
