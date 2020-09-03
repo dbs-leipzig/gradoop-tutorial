@@ -27,6 +27,10 @@
         <project.build.targetJdk>1.8</project.build.targetJdk>
         <plugin.maven-compiler.version>3.8.0</plugin.maven-compiler.version>
         <plugin.maven-shade.version>3.2.1</plugin.maven-shade.version>
+        <dep.log4j.version>1.2.17</dep.log4j.version>
+
+        <log4j.properties>log4j.properties</log4j.properties>
+        <argLine>-Dlog4j.configuration=${log4j.properties}</argLine>
     </properties>
 
     <build>
@@ -95,6 +99,12 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-clients_2.11</artifactId>
             <version>${dep.flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${dep.log4j.version}</version>
         </dependency>
 
     </dependencies>
