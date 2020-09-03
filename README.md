@@ -8,7 +8,7 @@ In this tutorial you will learn to:
 * use Gradoop-Operators to answer specific analytical questions.
 * execute Gradoop on a shared-nothing Flink cluster.
 
-Please find the [tutorial instructions](https://github.com/dbs-leipzig/gradoop-tutorial/wiki/Tutorial-Instructions) in the Wiki of this
+Please find the [tutorial instructions](https://github.com/dbs-leipzig/gradoop-tutorial/wiki) in the Wiki of this
  repository.
 
 ### Requirements
