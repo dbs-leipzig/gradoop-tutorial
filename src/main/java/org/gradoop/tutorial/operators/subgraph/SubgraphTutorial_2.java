@@ -52,17 +52,17 @@ public class SubgraphTutorial_2 {
     // load the graph
     LogicalGraph graph = dataSource.getLogicalGraph();
 
-    /**
-     *
-     * Insert your code here!
-     *
-     * Classes that may help you:
-     * @see org.gradoop.flink.model.impl.functions.filters.And
-     * @see org.gradoop.flink.model.impl.functions.filters.Or
-     * @see org.gradoop.flink.model.impl.functions.epgm.LabelIsIn
-     * @see org.gradoop.flink.model.impl.functions.epgm.ByProperty
-     *
-     */
+    //-------------------------------------------------------------------------------------------------------
+    // Insert your code here!
+    //
+    //  Classes that may help you:
+    //  @see org.gradoop.flink.model.impl.functions.filters.And
+    //  @see org.gradoop.flink.model.impl.functions.filters.Or
+    //  @see org.gradoop.flink.model.impl.functions.epgm.LabelIsIn
+    //  @see org.gradoop.flink.model.impl.functions.epgm.ByProperty
+    //-------------------------------------------------------------------------------------------------------
+
+    // graph = graph...
 
     // print the schema graph to the console for verification
     TutorialHelper.getSchemaGraphWithBrowserProperty(graph)

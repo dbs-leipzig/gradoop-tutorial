@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package org.gradoop.tutorial.operators.subgraph;
+package org.gradoop.tutorial.operators.query;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.gradoop.flink.io.impl.csv.CSVDataSource;
 import org.gradoop.flink.io.impl.dot.DOTDataSink;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
+import org.gradoop.flink.model.impl.operators.combination.ReduceCombination;
 import org.gradoop.flink.util.GradoopFlinkConfig;
 import org.gradoop.tutorial.helper.TutorialHelper;
 
@@ -29,11 +30,11 @@ import java.io.File;
  * Gradoop tutorial
  * ================
  *
- * Operator: Subgraph
- * Task number: 1
- * Short description: Create a subgraph that contains ‘person’ vertices and ‘knows’ edges only.
+ * Operator: Query
+ * Task number: 2
+ * Short description: Find every Person and University that is located in Bangkok.
  */
-public class SubgraphTutorial_1 {
+public class QueryTutorial_2 {
 
   /**
    * The main function to run your application.
@@ -42,7 +43,6 @@ public class SubgraphTutorial_1 {
    * @throws Exception in case of an error
    */
   public static void main(String[] args) throws Exception {
-
     // create flink execution environment
     ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
     // create Gradoop config
@@ -53,20 +53,21 @@ public class SubgraphTutorial_1 {
     LogicalGraph graph = dataSource.getLogicalGraph();
 
     //-------------------------------------------------------------------------------------------------------
-    // Insert your code here!
+    // Insert the correct GDL-Query below.
     //
     //  Classes that may help you:
-    //  @see org.gradoop.flink.model.impl.functions.epgm.ByLabel
+    //  @see org.gradoop.flink.model.impl.operators.matching.single.cypher.CypherPatternMatching
     //-------------------------------------------------------------------------------------------------------
+    graph = graph.query(
+      // add query string here
+      ""
+    ).reduce(new ReduceCombination<>());
 
-    // graph = graph...
-
-    // print the schema graph to the console for verification
-    TutorialHelper.getSchemaGraph(graph)
-      .writeTo(new DOTDataSink("gradoop_tutorial_output" + File.separator + "01_subgraph_1.dot", true,
-        DOTDataSink.DotFormat.HTML));
+    // print the graph to the console for verification
+    graph.writeTo(new DOTDataSink("gradoop_tutorial_output" + File.separator + "03_query_2.dot", true,
+      DOTDataSink.DotFormat.HTML));
 
     // finally execute
-    env.execute("Gradoop Tutorial - Subgraph - Task 1");
+    env.execute("Gradoop Tutorial - Pattern Matching - Task 2");
   }
 }

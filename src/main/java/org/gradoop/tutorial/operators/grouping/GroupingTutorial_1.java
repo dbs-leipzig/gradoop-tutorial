@@ -54,15 +54,13 @@ public class GroupingTutorial_1 {
     // load the graph
     LogicalGraph graph = dataSource.getLogicalGraph();
 
-    /**
-     *
-     * Add the right grouping key functions and aggregates in the lists below.
-     *
-     * Classes that may help you:
-     * @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
-     *
-     */
+    //-------------------------------------------------------------------------------------------------------
+    // Add the right grouping key functions and aggregates in the lists below.
+    //
+    //  Classes that may help you:
+    //  @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
+    //-------------------------------------------------------------------------------------------------------
     graph = graph.callForGraph(
       new KeyedGrouping<>(
         Arrays.asList(/* Add vertex grouping key functions here */),

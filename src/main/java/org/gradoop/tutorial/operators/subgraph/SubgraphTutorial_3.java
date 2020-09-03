@@ -60,13 +60,14 @@ public class SubgraphTutorial_3 {
     // load the graph
     LogicalGraph graph = dataSource.getLogicalGraph();
 
-    /**
-     *
-     * Insert your code here!
-     *
-     * Also modify the content of class CreatedInPeriod (see below)
-     *
-     */
+    //-------------------------------------------------------------------------------------------------------
+    // Insert your code here!
+    //
+    //  Classes that may help you:
+    //  Also modify the content of class CreatedInPeriod (see below)
+    //-------------------------------------------------------------------------------------------------------
+
+    // graph = graph...
 
     // print the graph to the console for verification
     graph

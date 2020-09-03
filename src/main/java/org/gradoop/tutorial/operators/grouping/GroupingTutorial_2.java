@@ -62,17 +62,15 @@ public class GroupingTutorial_2 {
       // Adds a property 'age' to all person vertices.
       .transformVertices(new AddAgeToPerson());
 
-    /**
-     *
-     * Add the right grouping key functions and aggregates in the lists below.
-     * Note that all person vertices have now an additional property 'age' as Integer.
-     *
-     * Classes that may help you:
-     * @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.average.AverageProperty
-     *
-     */
+    //-------------------------------------------------------------------------------------------------------
+    // Add the right grouping key functions and aggregates in the lists below.
+    // Note that all person vertices have now an additional property 'age' as Integer.
+    //
+    //  Classes that may help you:
+    //  @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.average.AverageProperty
+    //-------------------------------------------------------------------------------------------------------
     graph = graph.callForGraph(
       new KeyedGrouping<>(
         Arrays.asList(/* Add vertex grouping key functions here */),

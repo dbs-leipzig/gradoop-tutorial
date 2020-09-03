@@ -67,21 +67,19 @@ public class GroupingTutorial_3 {
       .subgraph(new LabelIsIn<>("person"), new LabelIsIn<>("knows"))
       // Adds a property 'age' to all person vertices.
       .transformVertices(new AddAgeToPerson());
-
-    /**
-     *
-     * Add the right grouping key functions and aggregates in the lists below.
-     *
-     * Also modify the content of class GetDayOfDate (see below)
-     *
-     * Classes that may help you:
-     * @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.average.AverageProperty
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.min.MinProperty
-     * @see org.gradoop.flink.model.impl.operators.aggregation.functions.max.MaxProperty
-     *
-     */
+    
+    //-------------------------------------------------------------------------------------------------------
+    // Add the right grouping key functions and aggregates in the lists below.
+    //
+    // Also modify the content of class GetDayOfDate (see below)
+    //
+    //  Classes that may help you:
+    //  @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.average.AverageProperty
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.min.MinProperty
+    //  @see org.gradoop.flink.model.impl.operators.aggregation.functions.max.MaxProperty
+    //-------------------------------------------------------------------------------------------------------
     graph = graph.callForGraph(
       new KeyedGrouping<>(
         Arrays.asList(/* Add vertex grouping key functions here */),
