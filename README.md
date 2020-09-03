@@ -8,19 +8,24 @@ In this tutorial you will learn to:
 * use Gradoop-Operators to answer specific analytical questions.
 * execute Gradoop on a shared-nothing Flink cluster.
 
-Please find the [tutorial instructions](https://google.com) in the Wiki of this
+Please find the [tutorial instructions](https://github.com/dbs-leipzig/gradoop-tutorial/wiki/Tutorial-Instructions) in the Wiki of this
  repository.
 
 ### Requirements
 
 This tutorial is based on pre-compiled Gradoop maven artifacts. To set up the tutorial environment please
- `git clone` this repository.
+ clone this repository.
+ 
+```git clone https://github.com/dbs-leipzig/gradoop-tutorial.git```
+
+A sample dataset is already included in the repository.
  
  You also require:
  
 * Java 8
 * Maven 3.*
-* IDE to code :) 
+* [Graphviz](https://graphviz.gitlab.io/download/) for result visualization
+* IDE to code :) preferably [IntelliJ IDEA](https://www.jetbrains.com/de-de/idea/)
 
 ## What is Gradoop?
 

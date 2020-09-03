@@ -9,6 +9,11 @@
     <description>Gradoop tutorial with training for operators.</description>
     <version>1.0</version>
 
+    <organization>
+        <name>University of Leipzig</name>
+        <url>http://dbs.uni-leipzig.de/en</url>
+    </organization>
+
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -19,6 +24,9 @@
     <properties>
         <dep.flink.version>1.7.2</dep.flink.version>
         <dep.gradoop.version>0.5.1</dep.gradoop.version>
+        <project.build.targetJdk>1.8</project.build.targetJdk>
+        <plugin.maven-compiler.version>3.8.0</plugin.maven-compiler.version>
+        <plugin.maven-shade.version>3.2.1</plugin.maven-shade.version>
     </properties>
 
     <build>
@@ -26,10 +34,44 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.maven-compiler.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${project.build.targetJdk}</source>
+                    <target>${project.build.targetJdk}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${plugin.maven-shade.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>true</minimizeJar>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.apache.commons.cli</pattern>
+                                    <shadedPattern>org.gradoop.examples.thirdparty.commons_cli</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <!-- Filters out signed files to avoid SecurityException when integrating a signed jar in the resulting jar. -->
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

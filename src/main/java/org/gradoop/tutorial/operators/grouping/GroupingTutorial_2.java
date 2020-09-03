@@ -17,10 +17,8 @@
 package org.gradoop.tutorial.operators.grouping;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
-import org.gradoop.common.model.impl.pojo.EPGMVertex;
 import org.gradoop.flink.io.impl.csv.CSVDataSource;
 import org.gradoop.flink.io.impl.dot.DOTDataSink;
-import org.gradoop.flink.model.api.functions.TransformationFunction;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
 import org.gradoop.flink.model.impl.functions.epgm.LabelIsIn;
 import org.gradoop.flink.model.impl.operators.keyedgrouping.KeyedGrouping;
@@ -29,8 +27,6 @@ import org.gradoop.tutorial.helper.AddAgeToPerson;
 import org.gradoop.tutorial.helper.TutorialHelper;
 
 import java.io.File;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Arrays;
 
 /**
@@ -39,10 +35,11 @@ import java.util.Arrays;
  *
  * Operator: Grouping
  * Task number: 2
- * Short description: How many males and females are there?
+ * Short description: How many males and females are there? What is the average age per gender?
  *                    How many males know women and vice versa?
  *                    How many male and female person study at universities per class year?
- * Note: you already have a subgraph with 'person' and 'university' nodes and 'knows' and 'studyAt' edges.
+ * Note: You already have a subgraph with 'person' and 'university' nodes and 'knows' and 'studyAt' edges.
+ *       All person vertices have now an additional property 'age' as Integer.
  */
 public class GroupingTutorial_2 {
 
@@ -68,6 +65,7 @@ public class GroupingTutorial_2 {
     /**
      *
      * Add the right grouping key functions and aggregates in the lists below.
+     * Note that all person vertices have now an additional property 'age' as Integer.
      *
      * Classes that may help you:
      * @see org.gradoop.flink.model.impl.operators.keyedgrouping.GroupingKeys

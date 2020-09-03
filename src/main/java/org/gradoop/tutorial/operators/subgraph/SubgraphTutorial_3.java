@@ -35,8 +35,9 @@ import java.io.File;
  * Operator: Subgraph
  * Task number: 3
  * Short description: Some edge types have a ‘creationDate’ property.
- *                    Get all edges that contain this property and are crated in 2011-01-01
- *                    between 1 pm (incl.) and 2pm (excl.) by using a user defined edge filter function.
+ *                    Get all edges that contain this property and are crated in the period
+ *                    [2012-01-01 00:00 , 2012-01-05 00:00) by using a user defined edge filter function.
+ *                    Only source and target vertices of these edges should be included.
  *
  *                    Optional: Use parameters (by adding a constructor) to define the lower and upper bound
  *                    for the condition.
@@ -85,12 +86,10 @@ public class SubgraphTutorial_3 {
 
     /**
      * Default constructor.
+     *
+     * The optional task requires an modified constructor.
      */
-    CreatedInPeriod() {
-      /**
-       * The optional task requires an modified constructor.
-       */
-    }
+    CreatedInPeriod() { }
 
     @Override
     public boolean filter(E edge) throws Exception {

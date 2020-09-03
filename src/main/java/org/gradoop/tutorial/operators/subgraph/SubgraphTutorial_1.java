@@ -56,6 +56,9 @@ public class SubgraphTutorial_1 {
      *
      * Insert your code here!
      *
+     * Classes that may help you:
+     * @see org.gradoop.flink.model.impl.functions.epgm.ByLabel
+     *
      */
 
     // print the schema graph to the console for verification
