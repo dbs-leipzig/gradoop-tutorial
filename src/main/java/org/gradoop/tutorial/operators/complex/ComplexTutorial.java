@@ -18,21 +18,27 @@ package org.gradoop.tutorial.operators.complex;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.gradoop.flink.io.impl.csv.CSVDataSource;
+import org.gradoop.flink.io.impl.dot.DOTDataSink;
 import org.gradoop.flink.model.impl.epgm.LogicalGraph;
 import org.gradoop.flink.model.impl.functions.epgm.LabelIsIn;
+import org.gradoop.flink.model.impl.operators.aggregation.functions.count.Count;
 import org.gradoop.flink.model.impl.operators.combination.ReduceCombination;
+import org.gradoop.flink.model.impl.operators.grouping.Grouping;
+import org.gradoop.flink.model.impl.operators.grouping.GroupingStrategy;
 import org.gradoop.flink.util.GradoopFlinkConfig;
 import org.gradoop.tutorial.helper.TutorialHelper;
+
+import java.io.File;
 
 /**
  * Gradoop tutorial
  * ================
  *
- * Operator: Query
- * Task number: 1
- * Short description: Create a friendship graph of all friends of the person named "John".
+ * Operator: Complex
+ * Short description: Create a graph that show how many males and females are studying at each university
+ * contained in the test data.
  */
-public class ComplexTutorial_1 {
+public class ComplexTutorial {
 
   /**
    * The main function to run your application.
@@ -50,45 +56,20 @@ public class ComplexTutorial_1 {
     // load the graph
     LogicalGraph graph = dataSource.getLogicalGraph();
 
-    graph = graph.vertexInducedSubgraph(new LabelIsIn<>(
-      "person", "tag", "country", "city", "post"));
+    //-------------------------------------------------------------------------------------------------------
+    // Add the analytical pipeline below:
+    //
+    // Try to use all of the recently shown operators.
+    //-------------------------------------------------------------------------------------------------------
 
+    // graph = graph...
 
-    graph = graph
-      .query(
-        "MATCH (p1:person)<-[:hasCreator]-(po:post)<-[:likes]-(p2:person)\n" +
-        "(p1)-[:isLocatedIn]->(c1:city)\n" +
-        "(p2)-[:isLocatedIn]->(c2:city)\n" +
-        "(po)-[:hasTag]->(t:tag)\n" +
-        "(c1)-[:isPartOf]->(ca:country)<-[:isPartOf]-(c2)\n" +
-        "WHERE p1 != p2", "(ca)-[new:hasInterest]->(t)")
-      .reduce(new ReduceCombination<>());
+    // print the graph to the console for verification
+    graph.writeTo(new DOTDataSink("gradoop_tutorial_output" + File.separator + "04_complex.dot",
+      true,
+      DOTDataSink.DotFormat.HTML));
 
-    System.out.println(graph.getVertices().count());
-
-//    // group on vertex and edge labels + count grouped edges
-//    LogicalGraph groupedGraph  = graph.callForGraph(
-//      new Grouping.GroupingBuilder()
-//        .setStrategy(GroupingStrategy.GROUP_COMBINE)
-//        .addVertexGroupingKey("name")
-//        .useEdgeLabel(true).useVertexLabel(true)
-//        .addEdgeAggregateFunction(new Count())
-//        .build());
-//
-//    // filter all edges below a fixed threshold
-//    groupedGraph = groupedGraph.edgeInducedSubgraph(new FilterFunction<EPGMEdge>() {
-//      @Override
-//      public boolean filter(EPGMEdge epgmEdge) throws Exception {
-//        return epgmEdge.getPropertyValue("count").getLong()>5;
-//      }
-//    });
-//
-//    // print the graph to the console for verification
-//    groupedGraph.writeTo(new DOTDataSink("gradoop_tutorial_output" + File.separator + "04_complex_1.dot",
-//      true,
-//      DOTDataSink.DotFormat.HTML));
-//
-//    // finally execute
-//    env.execute("Gradoop Tutorial - Grouping - Task 1");
+    // finally execute
+    env.execute("Gradoop Tutorial - Complex");
   }
 }
