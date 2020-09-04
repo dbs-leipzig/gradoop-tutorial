@@ -38,5 +38,15 @@ public class HelloWorld {
     loader.initDatabaseFromString("g0[(v:Hello)-[]->(v2:World)]");
     // print the graph
     loader.getLogicalGraph().print();
+
+    System.out.println("" +
+      " #####                                            \n" +
+      "#     # #####    ##   #####   ####   ####  #####  \n" +
+      "#       #    #  #  #  #    # #    # #    # #    # \n" +
+      "#  #### #    # #    # #    # #    # #    # #    # \n" +
+      "#     # #####  ###### #    # #    # #    # #####  \n" +
+      "#     # #   #  #    # #    # #    # #    # #      \n" +
+      " #####  #    # #    # #####   ####   ####  #      \n" +
+      "                                                  ");
   }
 }
